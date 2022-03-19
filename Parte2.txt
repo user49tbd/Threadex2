@@ -1,0 +1,44 @@
+package Pack2;
+
+import java.util.concurrent.Semaphore;
+
+public class class2b extends Thread{
+	private int tv;
+	Semaphore sm;
+	public class2b(Semaphore sm,int tv){
+		this.sm=sm;
+		this.tv=tv;
+	}
+
+	@Override
+	public void run() {
+		
+		try {
+			sm.acquire();
+			int randnum = (int) ((Math.random()*4)+1);
+			dic(randnum,tv);
+		}catch(Exception e){
+			
+		}finally {
+			sm.release();
+		}
+		super.run();
+	}
+	public void dic(int v,int t) {
+		switch(v){
+		case 1:
+			System.out.println("Thread :"+t+" está cruzando em direção a norte");
+			break;
+		case 2:
+			System.out.println("Thread :"+t+" está cruzando em direção a sul");
+			break;
+		case 3:
+			System.out.println("Thread :"+t+" está cruzando em direção a leste");
+			break;
+		case 4:
+			System.out.println("Thread :"+t+" está cruzando em direção a oeste");
+			break;
+		}
+	}
+	
+}

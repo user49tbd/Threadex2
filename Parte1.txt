@@ -1,0 +1,16 @@
+package Pack1;
+
+import java.util.concurrent.Semaphore;
+
+import Pack2.class2b;
+
+public class class2 {
+	public static void main(String []args) {
+		int quant=1;
+		Semaphore a = new Semaphore(quant);
+		for(int c=0;c<4;c++) {
+			Thread t1 = new class2b(a,c);
+			t1.start();
+		}
+	}
+}
